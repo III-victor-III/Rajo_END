@@ -368,3 +368,20 @@ body {
         font-size: 1.5em;
     }
 }
+/* Estilos para la imagen de perfil en la esquina superior derecha */
+.profile-image-container {
+    position: fixed; /* Esto hace que la imagen se quede pegada aunque hagas scroll */
+    top: 10px;       /* La separa 10px del borde superior */
+    right: 10px;     /* La separa 10px del borde derecho */
+    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
+    width: 100px;    /* Ajusta el ancho de la imagen como lo jugadores de lol */
+    height: auto;    /* Mantiene la proporción para que no se vea deforme :3 */
+}
+
+.profile-image-container img {
+    display: block;  /* Evita espacios extra debajo de la imagen */
+    width: 100%;     /* La imagen ocupa todo el ancho de su contenedor */
+    height: auto;
+    border-radius: 50%; /* Para hacer la imagen circular*/
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Le da una sombrita piola */
+}
