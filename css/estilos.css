@@ -1,0 +1,370 @@
+body {
+    font-family: 'Inter', sans-serif;
+    /* Usando fuente Inter para un look moderno */
+    margin: 0;
+    padding: 0;
+    /* --- IMPORTANTE: Verifica la ruta y el nombre de tu imagen aquí --- */
+    /* Asegúrate de que 'imagen' es el nombre de la carpeta y 'fondo_rajo.jpg' es el nombre exacto de tu archivo de imagen (incluyendo la extensión, ej: .png, .jpeg). */
+    /* Si tu imagen se llama diferente, por ejemplo 'mi_fondo.png', la ruta debe ser 'imagen/mi_fondo.png' */
+    background-image: url('imagen/fondo_rajo.jpg');
+    background-size: cover;
+    /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center;
+    /* Centra la imagen de fondo */
+    background-attachment: fixed;
+    /* Mantiene la imagen fija al hacer scroll */
+    background-color: #1a202c;
+    /* Color de fondo de respaldo (gris oscuro). Verás este color si la imagen no carga. */
+    color: #fff;
+    /* Color de texto blanco */
+    display: flex;
+    /* Usar flexbox para el diseño principal */
+    min-height: 100vh;
+    /* La altura mínima es el 100% del viewport */
+    overflow: hidden;
+    /* Evita barras de desplazamiento innecesarias en el body */
+}
+
+
+/* Estilos de la barra lateral */
+
+.sidebar {
+    width: 220px;
+    /* Ancho de la barra lateral */
+    background-color: rgba(17, 24, 39, 0.9);
+    /* Fondo oscuro con transparencia */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Incluye padding y borde en el ancho */
+    display: flex;
+    flex-direction: column;
+    /* Elementos apilados verticalmente */
+    align-items: center;
+    /* Centra los elementos horizontalmente */
+    border-right: 2px solid rgba(55, 65, 81, 0.7);
+    /* Borde derecho sutil */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    /* Sombra para profundidad */
+    border-radius: 0 10px 10px 0;
+    /* Bordes redondeados en el lado derecho */
+}
+
+
+/* Estilos para los botones de la barra lateral */
+
+.sidebar button {
+    width: 90%;
+    /* Ancho de los botones */
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    background-color: #4f46e5;
+    /* Color morado vibrante */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    /* Esquinas más redondeadas */
+    cursor: pointer;
+    font-size: 1.15em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    /* Transición suave para hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Sombra para botones */
+    text-transform: uppercase;
+    /* Texto en mayúsculas */
+}
+
+.sidebar button:hover {
+    background-color: #6366f1;
+    /* Morado más claro al pasar el ratón */
+    transform: translateY(-2px);
+    /* Pequeño efecto de elevación */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    /* Sombra más pronunciada */
+}
+
+
+/* Estilos del contenido principal */
+
+.main-content {
+    flex-grow: 1;
+    /* Ocupa el espacio restante */
+    padding: 40px;
+    /* Más padding para el contenido */
+    background-color: rgba(31, 41, 55, 0.85);
+    /* Fondo oscuro con más transparencia */
+    margin: 20px;
+    /* Margen alrededor del contenido principal */
+    border-radius: 15px;
+    /* Bordes redondeados */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Alinea el contenido al inicio */
+    position: relative;
+    /* Para posicionar el contacto relativo a este */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    /* Sombra más grande */
+    overflow-y: auto;
+    /* Permite desplazamiento si el contenido es largo */
+}
+
+
+/* Estilos para la sección de descripción de Rajo */
+
+.rajo-description {
+    background-color: rgba(55, 65, 81, 0.9);
+    /* Fondo ligeramente más claro */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+    /* Espacio debajo de la descripción */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.rajo-description h1 {
+    font-size: 2.8em;
+    color: #a78bfa;
+    /* Morado claro para el título */
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.rajo-description p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #e5e7eb;
+    /* Gris claro para el texto */
+    max-width: 800px;
+    /* Limita el ancho del texto para legibilidad */
+    margin: 0 auto;
+    /* Centra el párrafo */
+}
+
+
+/* Estilos para las páginas de contenido (Combos y Eventos) */
+
+.content-page {
+    display: none;
+    /* Ocultas por defecto */
+    background-color: rgba(55, 65, 81, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    /* Asegura que el contenido se apile */
+    gap: 20px;
+    /* Espacio entre elementos en la página */
+}
+
+.content-page h2 {
+    font-size: 2.2em;
+    color: #818cf8;
+    /* Azul claro para los subtítulos */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content-page p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #d1d5db;
+}
+
+.content-page ul {
+    list-style: none;
+    /* Quita viñetas por defecto */
+    padding: 0;
+    margin-top: 20px;
+}
+
+.content-page li {
+    background-color: rgba(31, 41, 55, 0.7);
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 1.05em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.content-page li a {
+    color: #60a5fa;
+    /* Azul para enlaces */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.content-page li a:hover {
+    color: #3b82f6;
+    /* Azul más oscuro al pasar el ratón */
+    text-decoration: underline;
+}
+
+
+/* Estilos para la sección de contactos */
+
+.contact-section {
+    background-color: rgba(31, 41, 55, 0.95);
+    /* Fondo oscuro casi opaco */
+    padding: 15px 20px;
+    border-radius: 10px;
+    position: absolute;
+    /* Posicionamiento absoluto */
+    bottom: 20px;
+    /* A 20px del borde inferior */
+    left: 20px;
+    /* A 20px del borde izquierdo */
+    width: 250px;
+    /* Ancho fijo */
+    box-sizing: border-box;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    display: none;
+    /* Oculto por defecto */
+    animation: fadeIn 0.5s ease-out forwards;
+    /* Animación de aparición */
+}
+
+.contact-section.active {
+    display: block;
+    /* Visible cuando está activo */
+}
+
+.contact-section h3 {
+    font-size: 1.6em;
+    color: #c4b5fd;
+    /* Morado claro para el título de contactos */
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contact-section p {
+    margin: 8px 0;
+    font-size: 1em;
+}
+
+.contact-section a {
+    color: #93c5fd;
+    /* Azul más claro para enlaces de contacto */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+
+/* Iconos para redes sociales (usando caracteres unicode o Font Awesome si se permite) */
+
+.social-icon {
+    font-size: 1.2em;
+}
+
+
+/* Animaciones */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Media queries para responsividad */
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        /* Apila la barra lateral y el contenido en pantallas pequeñas */
+        overflow-y: auto;
+        /* Permite desplazamiento vertical en el cuerpo */
+    }
+    .sidebar {
+        width: 100%;
+        /* Ancho completo */
+        height: auto;
+        /* Altura automática */
+        flex-direction: row;
+        /* Botones en fila */
+        flex-wrap: wrap;
+        /* Permite que los botones se envuelvan */
+        justify-content: center;
+        /* Centra los botones */
+        padding: 15px 10px;
+        border-right: none;
+        border-bottom: 2px solid rgba(55, 65, 81, 0.7);
+        border-radius: 0 0 10px 10px;
+    }
+    .sidebar button {
+        width: 45%;
+        /* Dos botones por fila */
+        margin: 5px;
+        /* Espacio entre botones */
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .main-content {
+        margin: 15px;
+        /* Margen reducido */
+        padding: 20px;
+    }
+    .rajo-description h1 {
+        font-size: 2em;
+    }
+    .rajo-description p {
+        font-size: 1em;
+    }
+    .content-page h2 {
+        font-size: 1.8em;
+    }
+    .content-page p {
+        font-size: 0.95em;
+    }
+    .contact-section {
+        width: calc(100% - 40px);
+        /* Ancho completo menos el padding */
+        left: 20px;
+        right: 20px;
+        /* Asegura que ocupe todo el ancho disponible */
+        bottom: 15px;
+        /* Ajusta la posición inferior */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar button {
+        width: 90%;
+        /* Un botón por fila en pantallas muy pequeñas */
+        margin-bottom: 10px;
+    }
+    .main-content {
+        margin: 10px;
+        padding: 15px;
+    }
+    .rajo-description h1 {
+        font-size: 1.8em;
+    }
+    .rajo-description p {
+        font-size: 0.9em;
+    }
+    .content-page h2 {
+        font-size: 1.5em;
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajo - Página Oficial (Simplificada)</title>
+    <!-- Enlace al archivo CSS externo. La ruta DEBE ser correcta. -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <!-- Barra lateral de navegación -->
+    <div class="sidebar">
+        <button onclick="showContent('combos')">Combos</button>
+        <button onclick="showContent('eventos')">Eventos</button>
+        <button onclick="toggleContacts()">Contactos</button>
+    </div>
+
+    <!-- Contenido principal de la página -->
+    <div class="main-content">
+        <!-- Sección de descripción de Rajo (visible por defecto) -->
+        <div class="rajo-description" id="rajoDescription">
+            <h1>¡Bienvenido a la página "No oficial" de Rajo!</h1>
+            <p>Rajo es una figura influyente en el mundo de los videojuegos. Esta es una versión simplificada de su página para probar la funcionalidad.</p>
+        </div>
+
+        <!-- Sección de Combos (oculta por defecto) -->
+        <div class="content-page" id="combos-page">
+            <h2>Ejemplos de Sets y Combos</h2>
+            <p>Aquí verás contenido de combos.</p>
+            <ul>
+                <li>Combo 1: Descripción corta. <a href="#">Ver</a></li>
+                <li>Combo 2: Otra descripción. <a href="#">Ver</a></li>
+            </ul>
+        </div>
+
+        <!-- Sección de Eventos (oculta por defecto) -->
+        <div class="content-page" id="eventos-page">
+            <h2>Sorteos y Torneos Exclusivos</h2>
+            <p>Aquí verás contenido de eventos.</p>
+            <ul>
+                <li>Torneo de Prueba: Fecha y premios. <a href="#">Regístrate</a></li>
+                <li>Sorteo simple: Más información. <a href="#">Info</a></li>
+            </ul>
+        </div>
+
+        <!-- Sección de Contactos (oculta por defecto, aparece al hacer clic) -->
+        <div class="contact-section" id="contactSection">
+            <h3>Conéctate con Rajo</h3>
+            <p><a href="https://x.com/QueRajo" target="_blank">Twitter (X)</a></p>
+            <p><a href="https://www.youtube.com/@RajoEND" target="_blank">YouTube</a></p>
+            <p><a href="https://discord.gg/rajo_community" target="_blank">Discord</a></p>
+            <p><a href="https://www.roblox.com/groups/YOUR_ROBLOX_GROUP_ID/YOUR_ROBLOX_GROUP_NAME" target="_blank">Grupo de Roblox</a></p>
+            <p><a href="https://www.roblox.com/users/YOUR_ROBLOX_PROFILE_ID/profile" target="_blank">Perfil de Roblox</a></p>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Maneja la visibilidad de las diferentes secciones de contenido.
+         * Oculta todas las páginas de contenido (combos, eventos) y la descripción principal,
+         * luego muestra la sección especificada.
+         * También oculta la sección de contactos.
+         * @param {string} pageId - El ID de la página a mostrar ('combos', 'eventos', 'description').
+         */
+        function showContent(pageId) {
+            // Obtener referencias a las secciones
+            const rajoDescription = document.getElementById('rajoDescription');
+            const combosPage = document.getElementById('combos-page');
+            const eventosPage = document.getElementById('eventos-page');
+            const contactSection = document.getElementById('contactSection');
+
+            // Ocultar todas las secciones de contenido y la descripción por defecto
+            rajoDescription.style.display = 'none';
+            combosPage.style.display = 'none';
+            eventosPage.style.display = 'none';
+
+            // Ocultar siempre la sección de contactos al cambiar de contenido principal
+            contactSection.classList.remove('active');
+
+            // Mostrar la sección correspondiente
+            if (pageId === 'combos') {
+                combosPage.style.display = 'flex'; // Usar flex para mantener el layout interno
+            } else if (pageId === 'eventos') {
+                eventosPage.style.display = 'flex'; // Usar flex para mantener el layout interno
+            } else { // Si pageId no es 'combos' ni 'eventos', mostrar la descripción
+                rajoDescription.style.display = 'block';
+            }
+        }
+
+        /**
+         * Alterna la visibilidad de la sección de contactos.
+         * Si se muestra la sección de contactos, asegura que la descripción de Rajo esté visible
+         * y que las páginas de combos/eventos estén ocultas.
+         */
+        function toggleContacts() {
+            const contactSection = document.getElementById('contactSection');
+            const rajoDescription = document.getElementById('rajoDescription');
+            const combosPage = document.getElementById('combos-page');
+            const eventosPage = document.getElementById('eventos-page');
+
+            // Alternar la clase 'active' para mostrar/ocultar la sección de contactos
+            contactSection.classList.toggle('active');
+
+            // Si la sección de contactos se está mostrando, asegurar que la descripción esté visible
+            // y que las otras páginas de contenido estén ocultas.
+            if (contactSection.classList.contains('active')) {
+                rajoDescription.style.display = 'block'; // Mostrar la descripción
+                combosPage.style.display = 'none'; // Ocultar página de combos
+                eventosPage.style.display = 'none'; // Ocultar página de eventos
+            }
+            // Si la sección de contactos se oculta, no cambiar el estado de las otras páginas.
+            // La visibilidad de las otras páginas se controla con showContent().
+        }
+
+        /**
+         * Al cargar la página, asegura que la descripción de Rajo sea la sección visible
+         * y que las otras páginas estén ocultas inicialmente.
+         */
+        document.addEventListener('DOMContentLoaded', (event) => {
+            showContent('description'); // Llama a la función para establecer el estado inicial
+        });
+    </script>
+
+</body>
+
+</html>
